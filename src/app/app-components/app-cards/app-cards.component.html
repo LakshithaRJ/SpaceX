@@ -1,0 +1,18 @@
+<div class="card-container-wrapper">
+  <div class="card-container">
+    <img *ngIf="cardData?.links?.flickr_images[0]; else noImageAvailable" [src]="cardData?.links?.flickr_images[0]"
+         class="mission-image" alt="Mission Image">
+    <ng-template #noImageAvailable>
+      <img src='../src/assets/images/Noimage.jpg' class="mission-image" alt="Mission Image">
+    </ng-template>
+    <span class="mission-name">{{cardData?.mission_name}}</span>
+    <ul class="mission-ids">Mission Ids:
+      <li *ngFor="let id of cardData?.mission_id">{{id}}</li>
+    </ul>
+    <span class="mission-launch-year">Launch Year: {{cardData?.launch_year}}</span>
+    <span class="mission-successful-launch">Successful Launch: {{cardData?.launch_success || 'NA'}}</span>
+    <span class="mission-successful-landing">
+      Successful Landing:{{cardData?.rocket?.first_stage?.cores[0]?.land_success || 'NA'}}
+    </span>
+  </div>
+</div>

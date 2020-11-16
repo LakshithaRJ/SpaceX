@@ -1,0 +1,9 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+
+  .launch-card {
+    padding: 5px;
+    flex: 1 20%;
+  }
+}

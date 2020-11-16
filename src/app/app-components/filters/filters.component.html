@@ -1,0 +1,26 @@
+<div class="filter-container">
+  <span class="filter-heading">Filters</span>
+  <div class="filter-type">
+    <p>Launch Year</p>
+    <ul>
+      <li *ngFor="let year of launchYear | rangeArrayCreator">
+        <span (click)="onYearSelected(year)"
+              [ngClass]="{'current-year-selected' : currentSelectedYear === year}">{{year}}</span>
+      </li>
+    </ul>
+    <div class="filter-type">
+      <p>Successful Launch</p>
+      <div class="button-container">
+        <button (click)="fetchSuccessfulLaunches(true)">True</button>
+        <button (click)="fetchSuccessfulLaunches(false)">False</button>
+      </div>
+    </div>
+    <div class="filter-type">
+      <p>Successful Landing</p>
+      <div class="button-container">
+        <button>True</button>
+        <button>False</button>
+      </div>
+    </div>
+  </div>
+</div>

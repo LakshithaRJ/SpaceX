@@ -1,0 +1,8 @@
+<section class="cards" *ngIf="launchCardData.length; else noDataAvailable;">
+  <div class="launch-card" *ngFor="let cardData of launchCardData">
+    <app-cards [cardData]="cardData"></app-cards>
+  </div>
+</section>
+<ng-template #noDataAvailable>
+  <div class="cards">No Results for this filter</div>
+</ng-template>
