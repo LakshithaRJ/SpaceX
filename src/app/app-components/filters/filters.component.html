@@ -5,21 +5,37 @@
     <ul>
       <li *ngFor="let year of launchYear | rangeArrayCreator">
         <span (click)="onYearSelected(year)"
-              [ngClass]="{'current-year-selected' : currentSelectedYear === year}">{{year}}</span>
+              [ngClass]="{'current-pill-selected' : currentSelectedYear === year}">{{year}}</span>
       </li>
     </ul>
     <div class="filter-type">
       <p>Successful Launch</p>
       <div class="button-container">
-        <button (click)="fetchSuccessfulLaunches(true)">True</button>
-        <button (click)="fetchSuccessfulLaunches(false)">False</button>
+        <button
+          (click)="fetchSuccessfulLaunches(true)"
+          [ngClass]="{'current-pill-selected': launchStatus}">
+          True
+        </button>
+        <button
+          id="true"
+          (click)="fetchSuccessfulLaunches(false)"
+          [ngClass]="{'current-pill-selected': !launchStatus}">
+          False
+        </button>
       </div>
     </div>
     <div class="filter-type">
       <p>Successful Landing</p>
       <div class="button-container">
-        <button>True</button>
-        <button>False</button>
+        <button
+          (click)="fetchSuccessfulLanding(true)"
+          [ngClass]="{'current-pill-selected': landingStatus}">
+          True
+        </button>
+        <button (click)="fetchSuccessfulLanding(false)"
+                [ngClass]="{'current-pill-selected': !landingStatus}">
+          False
+        </button>
       </div>
     </div>
   </div>

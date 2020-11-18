@@ -16,31 +16,29 @@ export class DataService {
     return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100');
   }
 
-  getSuccessfulLaunches(year: number): Observable<any> {
+  getSuccessfulLaunches(year: number, status: boolean): Observable<any> {
     if (year) {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&launch_year=' + year);
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=' + status + '&launch_year=' + year);
     } else {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true');
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=' + status);
     }
   }
 
-  getSuccessfulLanding(year: number): Observable<any> {
+  getSuccessfulLanding(year: number, status: boolean): Observable<any> {
     if (year) {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&land_success=true&launch_year=' + year);
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&land_success=' + status + '&launch_year=' + year);
     } else {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&land_success=true');
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&land_success=' + status);
     }
   }
 
-  getSuccessfulLaunchAndLanding(year: number): Observable<any> {
+  getSuccessfulLaunchAndLanding(year: number, launchStatus: boolean, landingSuccess: boolean): Observable<any> {
     if (year) {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true&launch_year=' + year);
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=' + launchStatus + '&land_success=' +
+        landingSuccess + '&launch_year=' + year);
     } else {
-      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true');
+      return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=' + launchStatus + '&land_success=' +
+        landingSuccess);
     }
-  }
-
-  getSuccessfulLaunchAndLandingForAYear(year: number): Observable<any> {
-    return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true&launch_year=' + year);
   }
 }

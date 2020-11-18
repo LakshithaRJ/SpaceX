@@ -1,9 +1,33 @@
+@import "src/assets/resources/mixins";
+
 .cards {
   display: flex;
   flex-wrap: wrap;
 
+  &.no-results {
+    height: 200px;
+    padding: 15px;
+    background: #FFFFFF;
+    margin: 0 15px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
   .launch-card {
-    padding: 5px;
-    flex: 1 20%;
+    padding: 0 5px;
+    flex: 1 100%;
+    margin: 10px 0;
+
+    @include tablet() {
+      flex: 1 35%;
+      margin: 0 0 15px;
+    }
+
+    @include desktop() {
+      flex: 1 20%;
+      margin: 0 0 15px;
+    }
   }
 }

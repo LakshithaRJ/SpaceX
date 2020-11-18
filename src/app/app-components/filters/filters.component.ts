@@ -11,32 +11,36 @@ export class FiltersComponent implements OnInit {
     start: 2006,
     end: new Date().getFullYear()
   };
-  currentSelectedYear = 0;
+  currentSelectedYear: number;
   previousSelectedYear = 0;
-  initialData = [];
+  launchStatus = true;
+  landingStatus = true;
 
   constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.dataService.getSuccessfulLaunchAndLanding(this.currentSelectedYear).subscribe(res => {
-      this.initialData = res;
-    });
   }
 
   onYearSelected(year: number) {
     this.currentSelectedYear = year === this.previousSelectedYear ? 0 : year;
     this.previousSelectedYear = this.currentSelectedYear;
-    this.dataService.getSuccessfulLaunchAndLanding(this.currentSelectedYear).subscribe(res => {
+    this.dataService.getSuccessfulLaunchAndLanding(this.currentSelectedYear, this.launchStatus, this.landingStatus).subscribe(res => {
       this.dataService.launchData.next(res);
     });
   }
 
   fetchSuccessfulLaunches(value: boolean) {
-    if (value) {
-      this.dataService.getSuccessfulLaunches(this.currentSelectedYear).subscribe(res => {
-        console.log(res);
-      });
-    }
+    this.launchStatus = value;
+    this.dataService.getSuccessfulLaunches(this.currentSelectedYear, value).subscribe(res => {
+      this.dataService.launchData.next(res);
+    });
+  }
+
+  fetchSuccessfulLanding(value: boolean) {
+    this.landingStatus = value;
+    this.dataService.getSuccessfulLanding(this.currentSelectedYear, value).subscribe(res => {
+      this.dataService.launchData.next(res);
+    });
   }
 }

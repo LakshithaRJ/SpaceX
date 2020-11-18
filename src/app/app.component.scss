@@ -1,5 +1,9 @@
 @import "src/assets/resources/mixins";
 
+.app-header {
+  padding: 15px;
+}
+
 .app-main-container-wrapper {
   padding: 15px;
 
@@ -13,11 +17,8 @@
       flex-direction: row;
     }
 
-    .app-header {
-      padding: 15px;
-    }
-
     app-filters {
+      height: 650px;
     }
   }
 }
