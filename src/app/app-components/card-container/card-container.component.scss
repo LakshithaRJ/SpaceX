@@ -13,6 +13,10 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+
+    + div.spinner-container {
+      display: none;
+    }
   }
 
   .launch-card {
@@ -30,4 +34,11 @@
       margin: 0 0 15px;
     }
   }
+}
+
+.spinner-container {
+  left: 60%;
+  position: absolute;
+  top: 50%;
+  @include loader-css();
 }

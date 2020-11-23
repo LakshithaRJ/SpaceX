@@ -8,6 +8,7 @@ import {DataService} from '../../app-services/data.service';
 })
 export class CardContainerComponent implements OnInit {
   launchCardData = [];
+  isDataLoaded = false;
 
   constructor(private dataService: DataService) {
   }
@@ -15,10 +16,12 @@ export class CardContainerComponent implements OnInit {
   ngOnInit() {
     this.dataService.getInitialData().subscribe(res => {
       this.launchCardData = res;
+      this.isDataLoaded = !!res && res.length;
     });
 
     this.dataService.launchData.subscribe(res => {
       this.launchCardData = res;
+      this.isDataLoaded = !!res;
     });
   }
 

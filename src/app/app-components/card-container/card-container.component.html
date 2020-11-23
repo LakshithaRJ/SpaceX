@@ -1,8 +1,12 @@
+<div class="cards no-results" *ngIf="launchCardData.length < 1 && isDataLoaded">No Results for this filter</div>
 <section class="cards" *ngIf="launchCardData.length; else noDataAvailable;">
   <div class="launch-card" *ngFor="let cardData of launchCardData">
     <app-cards [cardData]="cardData"></app-cards>
   </div>
 </section>
 <ng-template #noDataAvailable>
-  <div class="cards no-results">No Results for this filter</div>
+  <div class="spinner-container">
+    <div class="spinner"></div>
+  </div>
 </ng-template>
+
